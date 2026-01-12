@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be Like Me — The Chill Guy Edition</title>
+
+  <style>
+    :root{
+      --bg:#0e0f12;
+      --card:#151821;
+      --text:#e8e9ee;
+      --muted:#a7aab5;
+      --accent:#ff6fae;
+      --accent2:#7cf0ff;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 50% -10%, #1b1f2e 0%, var(--bg) 60%);
+      color:var(--text);
+    }
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 20px;
+      background:linear-gradient(to bottom, rgba(14,15,18,.85), rgba(14,15,18,.55));
+      backdrop-filter: blur(6px);
+    }
+    h1{
+      margin:0;
+      font-size:clamp(18px,3vw,26px);
+      letter-spacing:.3px;
+      font-weight:700;
+    }
+    .mute{
+      border:1px solid #2a2e42;
+      background:#121526;
+      color:#cfd3ff;
+      border-radius:999px;
+      padding:8px 12px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    /* Layout */
+    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 60px}
+    .card{
+      background:linear-gradient(180deg, #171b2b, #111424);
+      border:1px solid #232848;
+      border-radius:18px;
+      padding:22px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    .center{
+      display:grid; place-items:center; gap:14px;
+      position:relative;
+    }
+
+    /* Center image */
+    .center img.main{
+      max-width:320px; width:80%;
+      border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+
+    /* Hearts */
+    .dialogue{
+      display:flex; align-items:center; gap:10px;
+      font-size:18px; font-weight:600;
+    }
+    .heart{
+      width:16px; height:16px;
+      background:var(--accent);
+      position:relative; transform:rotate(-45deg);
+      animation: beat 1.1s infinite;
+      filter: drop-shadow(0 0 6px rgba(255,111,174,.6));
+    }
+    .heart::before,.heart::after{
+      content:""; position:absolute;
+      width:16px; height:16px; background:var(--accent);
+      border-radius:50%;
+    }
+    .heart::before{top:-8px; left:0}
+    .heart::after{left:8px; top:0}
+    @keyframes beat{
+      0%,100%{transform:rotate(-45deg) scale(1)}
+      50%{transform:rotate(-45deg) scale(1.25)}
+    }
+
+    /* Arrow */
+    .arrow{
+      position:absolute;
+      right:-10px; top:50%;
+      width:120px; height:2px;
+      background:linear-gradient(90deg, transparent, var(--accent2));
+      animation: fly 1.2s infinite ease-in-out;
+    }
+    .arrow::after{
+      content:""; position:absolute; right:-6px; top:-4px;
+      border:6px solid transparent; border-left-color:var(--accent2);
+    }
+    @keyframes fly{
+      0%{transform:translateX(-20px)}
+      100%{transform:translateX(0)}
+    }
+
+    /* GIF sections */
+    .section{margin-top:26px}
+    .gifbox{
+      display:grid; place-items:center; gap:10px;
+      position:relative;
+    }
+    .gifbox img{
+      max-width:260px; width:100%;
+      border-radius:14px;
+      box-shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    .note{
+      position:absolute; top:-10px; left:-10px;
+      width:26px; height:26px; border-radius:50%;
+      background:#22264a; color:#cfd3ff;
+      display:grid; place-items:center; font-weight:700; font-size:13px;
+      border:1px solid #343a78;
+    }
+
+    .btn{
+      border:1px solid #2a2e42;
+      background:#121526;
+      color:#e9ebff;
+      border-radius:12px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .hidden{display:none}
+
+    .overlay-text{
+      position:absolute; bottom:10px; left:10px; right:10px;
+      background:rgba(0,0,0,.55);
+      padding:8px 10px;
+      border-radius:10px;
+      font-weight:700; text-align:center;
+    }
+
+    footer{
+      margin-top:40px; text-align:center;
+      color:var(--muted); font-size:13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>Be Like Me — The Chill Guy Edition</h1>
+    <button class="mute" id="muteBtn">🔇 Unmute</button>
+  </div>
+
+  <audio id="bgm" loop>
+    <source src="just chill likeandsubscribe share funny dinosaur.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="wrap">
+
+    <!-- Center section -->
+    <section class="card center">
+      <img class="main" src="image-center.jpg" alt="Chill Guy">
+      <div class="dialogue">
+        <span class="heart"></span>
+        <span>Mai To Chill Guy hu Ekdam</span>
+        <span class="heart"></span>
+      </div>
+      <span class="arrow"></span>
+    </section>
+
+    <!-- GIF 1 -->
+    <section class="section card gifbox">
+      <span class="note">A</span>
+      <img src="gif1.gif" alt="GIF 1">
+      <div>Mai To Sbkoo Ignore Krr Deti Hu.. Issliye to Chill Hu Laadlee</div>
+    </section>
+
+    <!-- GIF 2 & 3 -->
+    <section class="section card">
+      <div class="row">
+
+        <!-- GIF 2 -->
+        <div class="gifbox">
+          <span class="note">B</span>
+          <button class="btn" id="btn2">Mujse To Uljhana Bhee Mat Wrnaa</button>
+          <img id="gif2" class="hidden" src="gif2.gif" alt="GIF 2">
+        </div>
+
+        <!-- GIF 3 -->
+        <div class="gifbox">
+          <span class="note">C</span>
+          <button class="btn" id="btn3">Nahi Manegaa Ulajhana hee hai Mujsee</button>
+          <div style="position:relative">
+            <img id="gif3" class="hidden" src="gif3.gif" alt="GIF 3">
+            <div id="gif3Text" class="overlay-text hidden">
+              To Tuu aaj Mere Haathoon Khtaam Hai Beta
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>Stay chill. Tap A → B → C 😌</footer>
+  </main>
+
+  <script>
+    // Audio mute/unmute
+    const bgm = document.getElementById('bgm');
+    const muteBtn = document.getElementById('muteBtn');
+    let playing = false;
+
+    muteBtn.onclick = () => {
+      if(!playing){
+        bgm.play();
+        playing = true;
+        muteBtn.textContent = '🔊 Mute';
+      }else{
+        bgm.pause();
+        playing = false;
+        muteBtn.textContent = '🔇 Unmute';
+      }
+    };
+
+    // GIF 2 reveal
+    document.getElementById('btn2').onclick = () => {
+      document.getElementById('gif2').classList.remove('hidden');
+    };
+
+    // GIF 3 reveal + text
+    document.getElementById('btn3').onclick = () => {
+      document.getElementById('gif3').classList.remove('hidden');
+      document.getElementById('gif3Text').classList.remove('hidden');
+    };
+  </script>
+</body>
+</html>
